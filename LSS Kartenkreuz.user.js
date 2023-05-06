@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         LSS-Kartenkreuz
 // @namespace    leitstellenspiel
-// @version      1
+// @version      2
 // @description  Fügt ein Kreuz in der Mitte der Karte auf www.leitstellenspiel.de hinzu
 // @match        https://www.leitstellenspiel.de*
-// @grant        MissSobol
+// @grant        None
+// @author       MissSobol
 // ==/UserScript==
 
 (function() {
@@ -19,6 +20,8 @@
         width: 50px;
         height: 50px;
         z-index: 9999;
+        background-color: transparent;
+        pointer-events: none;
     `;
 
     // CSS für die Kreuzlinien
