@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LSS-Kartenkreuz
 // @namespace    leitstellenspiel
-// @version      2
+// @version      3
 // @description  Fügt ein Kreuz in der Mitte der Karte auf www.leitstellenspiel.de hinzu
 // @match        https://www.leitstellenspiel.de*
 // @grant        None
