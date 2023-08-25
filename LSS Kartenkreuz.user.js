@@ -1,15 +1,53 @@
 // ==UserScript==
 // @name         LSS-Kartenkreuz
 // @namespace    leitstellenspiel
-// @version      3
+// @version      4r
 // @description  Fügt ein Kreuz in der Mitte der Karte auf www.leitstellenspiel.de hinzu
 // @match        https://www.leitstellenspiel.de*
 // @grant        None
 // @author       MissSobol
 // ==/UserScript==
 
-//Lieber Scriptnutzer,
-//schweren Herzens habe ich heute alle meine Scripte deaktiviert. Der Betreiber hat mir meinen Forenaccount gesperrt, will mir aber weder verraten warum, noch ist man gewillt in Diskurs mit mir zu treten. Da ich ohne einen Forenaccount nicht das Level an Support geben kann, welches ich für mich selber als erforderlich betrachte, habe ich mit sofortiger Wirkung alle meine Scripte deaktiviert.
-//Ich bedanke mich für 5 Jahre Zusammenarbeit im Forum. Danke an alle, die meine Scripte genutzt haben, Daumen dagelassen haben und Kommentare geschrieben haben.
-//Liebe Grüße und noch viel Spaß
-//Sobol
+(function() {
+    'use strict';
+
+    // CSS für das Kreuz
+    var crossStyle = `
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        z-index: 9999;
+        background-color: transparent;
+        pointer-events: none;
+    `;
+
+    // CSS für die Kreuzlinien
+    var lineStyle = `
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 30px;
+        height: 2px;
+        background-color: gray;
+        transform-origin: center;
+    `;
+
+    // Kreuz-Element erstellen und dem map_outer-Element hinzufügen
+    var mapOuter = document.getElementById('map_outer');
+    var cross = document.createElement('div');
+    cross.style = crossStyle;
+
+    // Kreuzlinien erstellen und dem Kreuz-Element hinzufügen
+    var line1 = document.createElement('div');
+    line1.style = lineStyle + 'transform: translate(-50%, -50%) rotate(0deg);';
+    var line2 = document.createElement('div');
+    line2.style = lineStyle + 'transform: translate(-50%, -50%) rotate(90deg);';
+
+    cross.appendChild(line1);
+    cross.appendChild(line2);
+
+    mapOuter.appendChild(cross);
+})();
